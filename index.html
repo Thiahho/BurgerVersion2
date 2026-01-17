@@ -1,46 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/img/cartelito.png" />
-    <link rel="apple-touch-icon" href="/img/cartelito.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cartelito - Web</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <link rel="icon" type="image/png" href="/img/cartelito.png" />
+     <link rel="apple-touch-icon" href="/img/cartelito.png" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Cartelito - Web</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <script>
+       tailwind.config = {
+         theme: {
+           extend: {
+             colors: {
               primary: "#E43C2F", // Hell's red
               secondary: "#151515", // Charcoal
               accent: "#FF6A3D", // Ember accent
               background: "#0B0B0B", // Deep black
               "text-main": "#F3EFE6", // Warm white
               "text-light": "#BFB8AA", // Warm gray
-            },
-            fontFamily: {
+             },
+             fontFamily: {
               sans: ["Oswald", "Inter", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
+             },
+           },
+         },
+       };
+     </script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
     />
-    <style>
-      @keyframes slide-in-right {
-        from {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
+     <style>
+       @keyframes slide-in-right {
+         from {
+           transform: translateX(100%);
+           opacity: 0;
+         }
+         to {
+           transform: translateX(0);
+           opacity: 1;
+         }
+       }
       @keyframes fade-in-up {
         from {
           transform: translateY(12px);
@@ -77,9 +77,9 @@
           box-shadow: 0 0 18px rgba(228, 60, 47, 0.35);
         }
       }
-      .animate-slide-in-right {
-        animation: slide-in-right 0.3s ease-out;
-      }
+       .animate-slide-in-right {
+         animation: slide-in-right 0.3s ease-out;
+       }
       .animate-fade-in-up {
         animation: fade-in-up 0.45s ease-out both;
       }
@@ -92,10 +92,20 @@
       .animate-glow {
         animation: glow-pulse 2.8s ease-in-out infinite;
       }
-    </style>
-  </head>
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+     </style>
+   </head>
   <body class="bg-background text-text-main font-sans">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
-</html>
+     <div id="root"></div>
+     <script type="module" src="/index.tsx"></script>
+   </body>
+ </html>
