@@ -172,14 +172,19 @@ const ProductsManager: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="animate-fade-in-up">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-          Gestion de Productos
-        </h1>
+        <div>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+            Gestion de Productos
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Ordena tus productos con drag &amp; drop o usando las flechas.
+          </p>
+        </div>
         <button
           onClick={() => openModal()}
-          className="bg-primary text-white font-bold py-2 px-4 rounded hover:bg-amber-600 transition-colors whitespace-nowrap"
+          className="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition-all duration-300 whitespace-nowrap shadow-sm hover:shadow-md"
         >
           + Añadir
         </button>
@@ -218,14 +223,18 @@ const ProductsManager: React.FC = () => {
                 onDragStart={() => handleDragStart(product)}
                 onDragOver={handleDragOver}
                 onDrop={() => handleDrop(product)}
-                className="cursor-move hover:bg-gray-50"
+                className="cursor-grab hover:bg-gray-50 transition-colors duration-200"
               >
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                      #{index + 1}
+                    </span>
+                    <div className="flex flex-col gap-1">
                     <button
                       onClick={() => moveProduct(product, "up")}
                       disabled={index === 0}
-                      className="text-gray-600 hover:text-gray-900 disabled:text-gray-300 disabled:cursor-not-allowed"
+                      className="text-gray-600 hover:text-gray-900 disabled:text-gray-300 disabled:cursor-not-allowed transition-colors"
                       title="Mover arriba"
                     >
                       ▲
@@ -233,11 +242,12 @@ const ProductsManager: React.FC = () => {
                     <button
                       onClick={() => moveProduct(product, "down")}
                       disabled={index === products.length - 1}
-                      className="text-gray-600 hover:text-gray-900 disabled:text-gray-300 disabled:cursor-not-allowed"
+                      className="text-gray-600 hover:text-gray-900 disabled:text-gray-300 disabled:cursor-not-allowed transition-colors"
                       title="Mover abajo"
                     >
                       ▼
                     </button>
+                    </div>
                   </div>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -266,24 +276,26 @@ const ProductsManager: React.FC = () => {
                   ${Math.round(product.priceCents / 100).toLocaleString("es-AR")}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <button
-                    onClick={() => openModal(product)}
-                    className="text-indigo-600 hover:text-indigo-900 mr-4"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    onClick={() => setModifiersModalProduct(product)}
-                    className="text-green-600 hover:text-green-900 mr-4"
-                  >
-                    Modificadores
-                  </button>
-                  <button
-                    onClick={() => handleDelete(product.id)}
-                    className="text-red-600 hover:text-red-900"
-                  >
-                    Borrar
-                  </button>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => openModal(product)}
+                      className="px-3 py-1.5 rounded-full text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      onClick={() => setModifiersModalProduct(product)}
+                      className="px-3 py-1.5 rounded-full text-green-700 bg-green-50 hover:bg-green-100 transition-colors"
+                    >
+                      Modificadores
+                    </button>
+                    <button
+                      onClick={() => handleDelete(product.id)}
+                      className="px-3 py-1.5 rounded-full text-red-700 bg-red-50 hover:bg-red-100 transition-colors"
+                    >
+                      Borrar
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -296,7 +308,7 @@ const ProductsManager: React.FC = () => {
         {products.map((product, index) => (
           <div
             key={product.id}
-            className="bg-white shadow-md rounded-lg p-4"
+            className="bg-white shadow-md rounded-lg p-4 border border-gray-100 transition-all duration-300 hover:shadow-lg"
           >
             <div className="flex gap-4">
               {/* Imagen */}
@@ -377,8 +389,8 @@ const ProductsManager: React.FC = () => {
       </div>
 
       {isModalOpen && currentProducts && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center p-4">
-          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center p-4 animate-fade-in">
+          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-full max-w-lg max-h-[90vh] overflow-y-auto animate-fade-in-up">
             <h2 className="text-2xl font-bold mb-4">
               {currentProducts.id ? "Editar Productos" : "Añadir Productos"}
             </h2>

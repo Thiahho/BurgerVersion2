@@ -252,14 +252,14 @@ const CheckoutModal: React.FC = () => {
 
   return (
     <div
-      className={`fixed inset-0 bg-black bg-opacity-90 flex ${
+      className={`fixed inset-0 bg-black bg-opacity-90 flex animate-fade-in ${
         cart.length === 0 ? "items-center" : "items-end"
       } justify-center z-50`}
     >
       <div
         className={`bg-gray-900 ${
           cart.length === 0 ? "rounded-lg" : "rounded-t-3xl"
-        } w-full max-w-2xl max-h-[95vh] overflow-y-auto animate-slide-in-right`}
+        } w-full max-w-2xl max-h-[95vh] overflow-y-auto animate-fade-in-up`}
       >
         {/* Header */}
         <div className="sticky top-0 bg-gray-900 border-b border-gray-800 p-4 z-10">
@@ -887,7 +887,7 @@ const CheckoutModal: React.FC = () => {
                 disabled={isSubmitting}
                 className={`w-full bg-primary hover:bg-opacity-90 text-white font-bold py-4 px-6 rounded-lg transition-all text-lg ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                } animate-pop`}
               >
                 {isSubmitting ? "Procesando..." : "Realizar pedido"}
               </button>

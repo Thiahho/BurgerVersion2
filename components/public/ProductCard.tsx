@@ -17,13 +17,13 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="bg-gray-900 rounded-2xl overflow-hidden flex flex-col transform hover:scale-105 transition-transform duration-300 cursor-pointer text-left border border-gray-800 hover:border-primary"
+        className="group bg-gray-900 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 cursor-pointer text-left border border-gray-800 hover:border-primary hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(0,0,0,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
       >
         <div className="relative">
           <img
             src={imageUrl}
             alt={product.name}
-            className="w-full h-48 object-cover"
+            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {
               (e.target as HTMLImageElement).src = "/placeholder.png";
             }}
