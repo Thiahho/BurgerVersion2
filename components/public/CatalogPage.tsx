@@ -60,13 +60,20 @@ const CatalogPage: React.FC = () => {
                 key={category.id}
                 onClick={() => setSelectedCategoryId(category.id)}
                 aria-pressed={selectedCategoryId === category.id}
-                className={`flex-shrink-0 px-4 py-2 font-medium transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
+                className={`group relative flex-shrink-0 px-4 py-2 font-medium transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
                   selectedCategoryId === category.id
-                    ? "text-white border-b-2 border-primary"
+                    ? "text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
                 {category.name}
+                <span
+                  className={`absolute left-2 right-2 -bottom-1 h-0.5 rounded-full bg-primary transition-transform duration-300 ${
+                    selectedCategoryId === category.id
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </button>
             ))}
           </div>
