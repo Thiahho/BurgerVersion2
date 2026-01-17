@@ -21,17 +21,17 @@ const Header: React.FC = () => {
 
   return (
     <header className="relative w-full flex justify-center bg-black">
-      <div className="relative w-full max-w-2xl h-48 md:h-56">
+      <div className="relative w-full max-w-2xl h-48 md:h-56 animate-fade-in">
         <img
           src={getFullApiUrl(banner.imageUrl)}
           alt="Banner"
           className="w-full h-full object-cover rounded-b-2xl"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col items-center justify-center text-center p-4 rounded-b-2xl">
-          <h1 className="text-white text-2xl md:text-3xl font-bold drop-shadow-lg">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70 flex flex-col items-center justify-center text-center p-4 rounded-b-2xl">
+          <h1 className="text-white text-2xl md:text-3xl font-bold drop-shadow-lg animate-fade-in-up">
             {banner.title}
           </h1>
-          <p className="text-white text-sm md:text-base mt-1 drop-shadow-md">
+          <p className="text-white text-sm md:text-base mt-1 drop-shadow-md animate-fade-in-up">
             {banner.subtitle}
           </p>
         </div>
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
         {/* Botón del carrito */}
         <button
           onClick={openCheckout}
-          className="relative bg-white bg-opacity-90 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+          className="relative bg-white bg-opacity-90 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           title="Ver carrito"
         >
           <svg
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
         {/* Botón de Login/Admin */}
         <Link
           to={isAuthenticated ? "/admin" : "/login"}
-          className="bg-white bg-opacity-90 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+          className="bg-white bg-opacity-90 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           title={isAuthenticated ? "Panel Admin" : "Iniciar Sesión"}
         >
         {isAuthenticated ? (
