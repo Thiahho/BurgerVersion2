@@ -21,7 +21,7 @@ const AdminLayout: React.FC = () => {
   };
 
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center px-4 py-2 mt-2 text-gray-100 transition-colors duration-200 transform rounded-md hover:bg-gray-700 ${
+    `flex items-center px-4 py-2 mt-2 text-gray-100 transition-all duration-200 transform rounded-md hover:bg-gray-700/80 hover:translate-x-1 ${
       isActive ? "bg-gray-700" : ""
     }`;
 
@@ -30,7 +30,7 @@ const AdminLayout: React.FC = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMobileMenu}
-        className="md:hidden fixed top-4 left-4 z-50 bg-secondary text-white p-2 rounded-md shadow-lg"
+        className="md:hidden fixed top-4 left-4 z-50 bg-secondary text-white p-2 rounded-md shadow-lg transition-transform duration-200 hover:scale-105"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -66,9 +66,11 @@ const AdminLayout: React.FC = () => {
       )}
 
       {/* Sidebar - Desktop and Mobile */}
-      <div className={`${
-        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 fixed md:static inset-y-0 left-0 z-40 w-64 bg-secondary transition-transform duration-300 ease-in-out md:flex flex-col`}>
+      <div
+        className={`${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 fixed md:static inset-y-0 left-0 z-40 w-64 bg-secondary transition-transform duration-300 ease-in-out md:flex flex-col`}
+      >
         <div className="flex items-center justify-center h-16 bg-gray-900">
           <span className="text-white font-bold uppercase">
             Panel Administrador
@@ -120,7 +122,9 @@ const AdminLayout: React.FC = () => {
 
       <div className="flex-1 flex flex-col overflow-hidden">
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 pt-16 md:pt-8 md:p-8">
-          <Outlet />
+          <div className="animate-fade-in-up">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>
