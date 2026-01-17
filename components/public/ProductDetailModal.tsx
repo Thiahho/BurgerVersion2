@@ -226,8 +226,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 animate-fade-in">
+      <div className="bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-in-up">
         {/* Header con imagen */}
         <div className="relative">
           <button
@@ -464,7 +464,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
             <button
               onClick={handleAddToCart}
-              className="flex-1 bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-lg transition-all"
+              className="flex-1 bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-lg transition-all animate-pop"
             >
               {editMode ? "Actualizar" : "Agregar"} ${" "}
               {calculateTotal().toLocaleString("es-AR", {
