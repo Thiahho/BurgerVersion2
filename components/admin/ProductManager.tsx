@@ -377,8 +377,8 @@ const ProductsManager: React.FC = () => {
       </div>
 
       {isModalOpen && currentProducts && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center p-4">
-          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-start md:items-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-full max-w-lg my-4 md:my-8 max-h-[calc(100vh-2rem)] md:max-h-[90vh] overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">
               {currentProducts.id ? "Editar Productos" : "Añadir Productos"}
             </h2>
